@@ -1,0 +1,50 @@
+<!--Data-Binding: permite a sincronização entre os dados de um componente e a interface do usuário (UI).
+Isso significa que, quando os dados são alterados, a UI é automaticamente atualizada para refletir essas 
+mudanças. -->
+
+<!-- os colchetes [] são usados para data binding (vinculação de dados) de propriedades. Permitem a vinculação uma propriedade de um 
+ componente Angular a um atributo de um elemento HTML. -->
+
+
+<!-- Interpolation: permite incorporar expressões dentro de chaves duplas ({{ }}) diretamente no template HTML. 
+ A expressão é avaliada e o resultado é convertido em uma string, que é então renderizada na visualização. -->  
+ 
+<!-- binding de classes e estilos permite que se adicione ou remova dinamicamente classes CSS e estilos
+diretamente nos elementos HTML com base em expressões do componente. !-->
+ <h2 [class.titulo]="estilizarTitulo">{{message}}</h2>
+
+
+<!-- Property Binding: permite ligar dados de um componente TypeScript a propriedades de elementos HTML no template. 
+Isso facilita a exibição dinâmica de dados e a atualização automática da interface do usuário quando os dados
+do componente mudam. -->
+ <img [src] = "imagePath" [style.width.px]="imageWidth">
+
+
+ <!-- Attribute binding: permite que você defina valores para atributos diretamente nos elementos HTML. Isso é 
+  útil para melhorar a acessibilidade, estilizar dinamicamente sua aplicação e gerenciar múltiplas classes ou 
+  estilos CSS simultaneamente. -->
+ <button [attr.aria-label]="ariaLabel" [disabled]="isDisabled" [style] = "botaoFechar">x</button>
+
+
+ <!-- Event binding em Angular é uma técnica que permite que você escute e responda a ações do usuário, como
+ cliques, movimentos do mouse, teclas pressionadas, entre outros. -->
+
+ <!-- OBS: [class] dentro desse botão faz um Property Binding atráves da utilização da propriedade "botaoClass" vinda de  un arquivo TS. -->
+<button (click)="enableCloseButton()" [class]="botaoClass">Habilitar o botão fechar</button>
+
+
+<!-- OBS: [class] dentro desse botão faz um Property Binding atráves da utilização da propriedade "botaoClass" vinda de  un arquivo TS. -->
+<button (click)="aplicarEstiloTitulo()" [class]="botaoClass">Aplicar estilos</button>
+
+
+<!-- Two-Way Data Binding permite que os dados no modelo e na interface do usuário (UI) estejam sincronizados automaticamente. 
+ Isso significa que qualquer alteração nos dados do modelo é refletida na UI e vice-versa, sem a necessidade de código adicional para 
+ atualizar manualmente cada um. -->
+<label for="nome">Nome</label>
+
+<!-- ngModel: permite a ligação bidirecional de dados entre um elemento de formulário HTML (como input, select, textarea) e uma 
+ propriedade no componente TypeScript12. Isso significa que qualquer alteração no valor do elemento HTML será refletida na propriedade do 
+ componente e vice-versa. -->
+<input type="text" id="nome" [(ngModel)]="nomeCliente">
+
+<span>O nome digitado é: </span><span id="nomeDigitado">{{nomeCliente}}</span>

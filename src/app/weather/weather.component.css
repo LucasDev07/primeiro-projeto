@@ -1,0 +1,26 @@
+.locations {
+    display: flex;
+    flex-direction: row;
+  
+}
+
+.locations .location {
+    background: #d8d8d8;
+    padding: 15px;
+    margin: 15px;
+    border-radius: 35px;
+    border: 1 px solid #bbb;
+    cursor: pointer;
+}
+
+.locations .location.active {
+    background: #5ad76a;
+}
+
+.locations .location.active:hover {
+    background: #3ea94c;
+}
+
+.locations .location:hover {
+    background: #aaa;
+}

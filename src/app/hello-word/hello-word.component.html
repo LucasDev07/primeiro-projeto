@@ -1,0 +1,31 @@
+<h2>Hello World!</h2>
+
+<p>Esse é o meu primeiro template</p>
+
+<app-filho-a [texto]="textoVaiProFilho" (textoPreenchido)="textoVeioDoFilho = $event"></app-filho-a>
+
+<app-filho-b></app-filho-b>
+
+<p>
+    <label for="caixaPai">Digite o texto que vai para o componente filho:</label>
+    <input type="text" id="caixaPai" #caixaPai>
+    <button (click)="textoVaiProFilho = caixaPai.value">Enviar para o filho</button>
+</p>
+
+<p *ngIf="textoVeioDoFilho">
+    Esse texto veio do filho {{ textoVeioDoFilho }}
+</p>
+
+<p>
+    <a href="/">Home</a>
+</p>
+
+<!-- Roteamento de componentes filhos. -->
+    <p> <a routerLink="filho-a">Filho A</a></p>
+
+    <p> <a routerLink="filho-b">Filho B</a></p>
+
+
+    <!-- router-outlet: é usado para carregar dinamicamente diferentes componentes com base na rota atual do URL. Permite que se crie 
+     aplicações de página única (SPAs), onde diferentes partes da aplicação podem mudar sem recarregar a página inteira1. -->
+<router-outlet/>

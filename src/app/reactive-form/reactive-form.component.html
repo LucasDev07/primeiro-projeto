@@ -1,0 +1,51 @@
+<h2>Formulário Reactive</h2>
+
+<p>
+    <button (click)="preencherFormulario()">Prencher Formulário:</button>
+</p>
+
+<form [formGroup]="profileForm" (ngSubmit)="submitForm()">
+    <label for="name">Nome:</label>
+    <input type="text" id="name" formControlName="name">
+
+    <label for="cpf">CPF:</label>
+    <input type="text" id="cpf" formControlName="cpf">
+
+    <div formGroupName="address">
+        <h3>Endereço</h3>
+
+        <label for="street">Rua:</label>
+        <input type="text" formControlName="street">
+ 
+        <label for="city">Cidade:</label>
+        <input type="text" formControlName="city">
+        
+        <label for="state">Estado:</label>
+        <input type="text" formControlName="state">
+        
+        <label for="zip">CEP:</label>
+        <input type="text" formControlName="zip">
+        
+    </div>
+
+    <div formArrayName="nicknames">
+        <h3>Apelidos</h3>
+
+        <div *ngFor="let apelido of apelidos.controls; let i=index">
+
+            <label for="apelido-{{i}}">Apelido:</label>
+            <input type="text" id="apelido-{{i}}" [formControlName]="i">
+        </div>
+
+        <button type="button" (click)="adicionarApelido()">Adicionar Apelido</button>
+    </div>
+
+    <button type="submit" class="botao verde" [disabled]="!profileForm.valid">Salvar</button>
+</form>
+
+<!--A expressão {{.value}} é usada para interpolação de dados. A interpolação 
+permite que sejam insiridos valores de variáveis diretamente no HTML.-->
+<p>Seu nome é: {{profileForm.controls.name.value}}</p>
+
+<p>Status: {{profileForm.status}}</p>
+

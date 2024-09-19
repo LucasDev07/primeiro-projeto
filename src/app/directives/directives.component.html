@@ -1,0 +1,42 @@
+<!-- As directives em Angular são classes que permitem adicionar comportamento extra aos elementos do DOM (Document Object Model) em suas
+  aplicações. Elas são usadas para modificar a aparência, comportamento ou layout dos elementos HTML. Temos como exemplo: Component Dire
+  ctives, Attribute Directives e Structural Directives. -->
+<h2>Exemplo de diretivas</h2>
+
+
+<!-- ngStyle: é usada para aplicar e atualizar estilos diretamente em elementos HTML com base em expressões dinâmicas. Isso 
+ Permite alterção de estilos de forma programática, dependendo do estado da aplicação. -->
+<p [ngStyle]="estilosParagrafos">Este é um parágrafo</p>
+
+<!-- ngClass: é usada para adicionar ou remover classes CSS de um elemento HTML dinamicamente, com base em condições específicas. 
+ Permitindo assim a alteração da aparência dos elementos de forma reativa. -->
+<!-- "?" e ":" se assemelham ao "if" e "else", pois parametrizam condições para as classes surgirem de acordo com o que for requsitado. -->    
+<button [ngClass]="aplicarEstiloVerde ? classeBotaoVerde : classeBotaoVermelho" (click)="aplicarEstilos()">Trocar estilos</button>
+
+<!-- ngIf: é usada para condicionalmente incluir ou excluir um elemento do DOM com base no valor de uma expressão booleana. 
+ Quando a expressão avaliada é verdadeira, o Angular renderiza o template fornecido; quando é falsa ou nula, o Angular não 
+ renderiza o template. -->
+<label *ngIf="camposVisiveis" for="nome">Digite seu nome:</label>
+
+<!-- ngModel: é uma diretiva que facilita a ligação bidirecional(duas direções) de dados entre um elemento de formulário 
+(como um input) e uma propriedade no componente. Isso significa que qualquer alteração no valor 
+do input será refletida automaticamente/ na propriedade do componente e vice-versa. -->
+<input *ngIf="camposVisiveis" type="text" id="nome" [(ngModel)]="name">
+
+<label *ngIf="camposVisiveis" for="nomeMaiusculo">Digite seu nome (Maiúsculas):</label>
+
+<input *ngIf="camposVisiveis" type="text" id="nomeMaiusculo" [(ngModel)]="name" (ngModelChange)="alterarParaMaisuculo($event)">
+
+<h3>Lista de clientes</h3>
+
+<!-- O ngFor: é usada para iterar sobre uma coleção, como um array, e criar um elemento HTML para cada item dessa coleção. 
+ É útil para exibir listas de dados de forma dinâmica. -->
+
+<!-- odd é usada dentro da diretiva *ngFor para identificar elementos com índices ímpares em uma lista. É útil, por exemplo, para 
+ aplicar estilos diferentes a elementos ímpares e pares, como em uma tabela onde se deseja destacar linhas alternadas 
+ para melhorar a legibilidade. -->
+<div *ngFor="let cliente of clientes; let i=index; let impar=odd;" [class.background-cinza]="impar">
+    {{i+1}} {{cliente.nome}}
+</div>
+
+<button (click)="esconderCampos()">Esconder Campos</button>

@@ -1,0 +1,13 @@
+* {
+    color: #0dba07;
+}
+
+/*:host: é usado dentro de um componente para aplicar estilos ao elemento host do componente, ou seja, 
+o elemento que contém o componente. É útil para isolar estilos e garantir que eles não afetem outros 
+elementos fora do componente.*/
+:host {
+    border: 1px solid #0dba07;
+    display: inline-block;
+    padding: 15px;
+    margin: 5px;
+}

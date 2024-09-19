@@ -1,0 +1,21 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*classe que representa o estado de "validez" dos campos de formulário*/
+.ng-valid[required] {
+    border: 1px solid #42a948;
+}
+
+/*classe que representa o estado de "invalidez" dos campos de formulário*/
+.ng-invalid:not(form, .ng-pristine) {
+    border: 1px solid #a94442;
+}

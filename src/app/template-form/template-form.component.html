@@ -1,0 +1,30 @@
+<h2>Template Form</h2>
+
+<!--(ngSubmit) dispara e trata o evento de envio de formulários.-->
+<form #customerForm="ngForm" (ngSubmit)="onSubmit()">
+    <!-- “required”: se refere a campos ou informações que são obrigatórios 
+    preencher. -->
+    <label for="name">Nome:</label>
+    <input type="text" id="name" required [(ngModel)]="model.name" name="name" #name="ngModel">
+    <!--O estado “pristine” é usado para indicar que um campo de formulário
+    não foi modificado pelo usuário. Quando um campo está “pristine”, 
+    significa que ele está em seu estado inicial, sem qualquer alteração 
+    desde que foi carregado.-->
+    <div [hidden]="name.valid || name.pristine">
+        Nome é obrigatório
+    </div>
+
+
+    <label for="cpf">CPF:</label>
+    <input type="text" id="cpf" required [(ngModel)]="model.cpf" name="cpf" #cpf="ngModel">
+    <div [hidden]="cpf.valid || cpf.pristine">
+        CPF é obrigatório
+    </div>
+
+    <label for="genero">Gênero:</label>
+    <select id="genero" [(ngModel)]="model.genero" name="genero">
+        <option *ngFor="let genero of generos" [value]="genero">{{genero}}</option>
+    </select>
+
+    <button type="submit" class="botao verde" [disabled]="!customerForm.form.valid">Salvar</button>
+</form>
